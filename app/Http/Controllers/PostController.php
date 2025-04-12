@@ -30,7 +30,9 @@ class PostController extends Controller
             'body'     => $request->body,
             'user_id'  => Auth::id(),
         ]);
+
         event(new PostCreated($post));
+
         return response()->json([
             'message' => 'Post created successfully.',
             'post' => $post,
